@@ -1,0 +1,120 @@
+#Login code
+
+import pandas as pd
+
+# Read the Excel spreadsheet into a pandas dataframe
+df = pd.read_excel('example.xlsx')
+
+# Ask user for username
+username = input("Enter username to search for: ")
+
+# Search for the user in the dataframe
+result = df.loc[df['Username'] == username]
+
+# Check if the query returned a result
+if not result.empty:
+    print("User found!")
+    print(result)
+else:
+    print("User not found.")
+
+# start of code to authenticate the user
+
+import sqlite3
+
+# Connect to the database
+conn = sqlite3.connect('example.db')
+c = conn.cursor()
+
+# Ask user for username and password
+username = input("Enter username: ")
+password = input("Enter password: ")
+
+# Query the database for the user's credentials
+c.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
+result = c.fetchone()
+
+# Check if the query returned a result
+if result:
+    print("Login successful!")
+else:
+    print("Invalid username or password.")
+
+# Close the database connection
+conn.close()
+
+
+# sample code for case where it is just the username and password
+# Sample username and password stored in a dictionary
+
+users = {"user1": "password1", "user2": "password2", "user3": "password3"}
+
+#ask user for username and password1
+username = input("Enter username: ")
+password = input("Enter password: ")
+
+#Check if the username and password are correct
+
+if username in users and password == users[username]:
+    print("Login successful!")
+else:
+    print("Invalid username or password.")
+
+
+#Ask user for session details
+session_name = input("Enter session name: ")
+trainer_name = input("Enter trainer name: ")
+start_time = input("Enter start time (HH:MM): ")
+end_time = input("Enter end time (HH:MM): ")
+session_date = input(f"Enter session date ({start_date} - {end_date}) in YYYY-MM-DD format: ")
+
+# Convert user input to datetime format
+start_datetime = datetime.datetime.strptime(session_date + ' ' + start_time, '%Y-%m-%d %H:%M')
+end_datetime = datetime.datetime.strptime(session_date + ' ' + end_time, '%Y-%m-%d %H:%M')
+
+# Check if session is within the upcoming week
+if start_datetime.date() < start_date or end_datetime.date() > end_date:
+    print("Error: session must be within the upcoming week.")
+else:
+    # Book the session
+    print("Booking session...")
+    # code to book session goes here
+
+# now we write code for someone to book a session for during the week
+import datetime
+
+#define the date range for the upcoming week
+
+today = datetime.date.today()
+start_date = today + datetime.timedelta(days=(7 - today.weekday()))
+end_date = start_date + datetime.timedelta(days=6)
+
+
+
+#code to show that a member is celebrating a birthday
+# assuming that you have an "account" class and a "birthday" attribute
+
+
+class Account:
+    def __init__(self, name, birthday):
+        self.name = name
+        self.birthday = birthday
+
+class App:
+    def __init__(self, accounts):
+        self.accounts = accounts
+
+        def display_feed(self):
+            for account in self.account:
+            print(f"{accounts.name}'s birthday is on {account.birthday}")
+#to use the above code you need to create some "Account" abjects
+account 1 = Account("Mike", "1956-05-11")
+account 2 = Account("Nheleti", "2015-05-27")
+account 3 = Account("Ntsumi", "2012-05-27")
+account 4 = Account("Vibes", "1991-02-05")
+account 5 = Account("Christel", "2002-03-27")
+account 6 = Account("Eric", "1993-12-29")
+account 7 = Account("Ma", "1976-10-01")
+account 8 = Account("Jason", "1993-02-18")
+
+#son
